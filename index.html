@@ -2,92 +2,37 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Рыбалка</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gone Fishing!</title>
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-<div class="game-container">
-    <!-- Фон -->
-    <img src="images/water.png" alt="Фон игры" class="background">
-
-    <!-- Меню и уровень -->
-    <header>
-        <div class="profile-btn" onclick="showProfile()">Профиль</div>
-        <div class="level-bar">
-            <span id="level-text">Уровень 1</span>
-            <div id="progress-bar"></div>
+<div id="game-container">
+    <h1 id="start-title">Gone Fishing!</h1>
+    <div id="info-wrapper">
+        <div id="instructions"></div>
+        <button id="start-btn"><span class="arrow"></span></button>
+    </div>
+    <div id="game-stats">
+        <span id="game-day">Day 1</span>
+        <div id="clock">
+            <svg viewBox="0 0 120 120" class="chart-gauge" fill="none" stroke-width="4">
+                <circle class="timer-backdrop" r="40" cx="60" cy="60"></circle>
+                <circle class="timer-gauge" r="40" cx="60" cy="60"></circle>
+                <text y="50%" x="50%" id="game-timer" class="timer-time">15s</text>
+            </svg>
         </div>
-    </header>
-
-    <div class="game-area">
-        <div class="invisible-line" id="invisibleLine"></div> <!-- Невидимая полоса -->
-        <img id="rod" class="rod" src="images/fishing_rod.png" alt="Fishing Rod"> <!-- удочка -->
-        <img id="bobber" class="bobber" src="images/float.png" alt="Bobber" style="display:none;"> <!-- поплавок-->
+        <span id="game-score">Total Score: 0</span>
     </div>
-    <!-- Кнопки действий -->
-    <div class="action-buttons">
-        <button id="castBtn" onclick="castLine()">Закинуть</button>
-        <button id="reelBtn" onclick="reelFish()" disabled>Тянуть</button>
-        <button id="pullBtn" onclick="stopFishing()" disabled>Вытащить</button> <!-- Новая кнопка -->
-    </div>
-
-
-    <!-- Информация по очкам -->
-    <div class="fish-stats">
-        <span>Очки: <span id="score">0</span></span>
-    </div>
-
-    <!-- Садок -->
-    <div class="fish-cage-btn" onclick="showCage()">Садок</div>
+    <p id="game-goal"></p>
 </div>
-<div id="fishEscapedModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeFishEscapedModal()">&times;</span>
-        <p id="fishEscapedDetails">Рыба сорвалась! Попробуйте снова.</p>
-    </div>
+<div id="click-container">
+    <span id="line"></span>
 </div>
-
-<!-- Модальное окно для касания берега -->
-<div id="shoreTouchModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeShoreTouchModal()">&times;</span>
-        <p>Поплавок коснулся берега!</p>
-    </div>
-</div>
-
-
-
-
-<!-- Модальное окно профиля -->
-<div id="profileModal" class="modal">
-    <div class="modal-content">
-        <h2>Профиль</h2>
-        <p>ID: <span id="playerId">12345</span></p>
-        <p>Очки: <span id="playerScore">0</span></p>
-        <p>Поймано рыбы: <span id="fishCaught">0</span></p>
-        <button onclick="closeModal('profileModal')">Закрыть</button>
-    </div>
-</div>
-
-<!-- Модальное окно для пойманной рыбы -->
-<div id="caughtFishModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeCaughtFishModal()">&times;</span>
-        <p id="caughtFishDetails"></p>
-    </div>
-</div>
-
-<!-- Модальное окно садка -->
-<div id="cageModal" class="modal">
-    <div class="modal-content">
-        <h2>Садок</h2>
-        <div id="cageContent"></div> <!-- Здесь будет отображаться пойманная рыба -->
-        <button onclick="closeModal('cageModal')">Закрыть</button>
-    </div>
-</div>
-
-
-<script src="script.js"></script>
+<div id="bubbles"></div>
+<script src="js/script.js"></script>
 </body>
 </html>
